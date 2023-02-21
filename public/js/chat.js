@@ -7,7 +7,7 @@ inputQuestion.addEventListener("keypress", (e) => {
   SendQuestion();
 });
 
-const OPENAI_API_KEY = "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";
+const key = process.env.OPENAI_API_KEY;
 
 function SendQuestion() {
   var sQuestion = inputQuestion.value;
@@ -17,7 +17,7 @@ function SendQuestion() {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: "Bearer " + OPENAI_API_KEY,
+      Authorization: "Bearer " + key,
     },
     body: JSON.stringify({
       model: "text-davinci-003",
