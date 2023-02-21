@@ -2,22 +2,26 @@ const socket = io();
 const inputQuestion = document.getElementById("inputQuestion");
 const result = document.getElementById("result");
 
+console.log("teste");
+console.log(process.env.TESTE);
+
 inputQuestion.addEventListener("keypress", (e) => {
   if (inputQuestion.value && e.key === 'Enter')
+
   SendQuestion();
 });
 
-const key = process.env.OPENAI_API_KEY;
 
 function SendQuestion() {
   var sQuestion = inputQuestion.value;
+  
   
   fetch("https://api.openai.com/v1/completions", {
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: "Bearer " + key,
+      Authorization: "Bearer " + process.env.OPENAI_API_KEY,
     },
     body: JSON.stringify({
       model: "text-davinci-003",
